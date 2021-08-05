@@ -1,0 +1,37 @@
+<app-nvar></app-nvar>
+<div class="container ">
+  <div class="row justify-content-center">
+    <div class="card mt-5 col-6  mb-5">
+      <div class="card-header">
+        Detalle de heroes
+      </div>
+      <div class="alert alert-secondary mt-3" role="alert" *ngIf="!heroe.id">
+        No hay detalles que mostrar.
+      </div>
+      <div class="card-body" *ngIf="heroe.id">
+        <img [src]="heroe.image?.url" class="card-img-top" alt="...">
+        <div class="card-header">
+          {{heroe.name}}
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"><h5 class="text-primary">Peso: </h5>{{heroe.appearance?.weight}}</li>
+          <li class="list-group-item"><h5 class="text-primary">Altura: </h5>
+            <ul>
+              <li *ngFor="let altura of heroe.appearance?.height">{{altura}} </li>
+            </ul>
+          </li>
+          <li class="list-group-item"><h5 class="text-primary">Nombre: </h5>{{heroe.name}}</li>
+          <li class="list-group-item"><h5 class="text-primary">Alias: </h5>
+            <ul>
+              <li *ngFor="let alias of heroe.biography?.aliases">{{alias}}</li>
+            </ul>
+          </li>
+          <li class="list-group-item"><h5 class="text-primary" >Color de ojos: </h5>{{colorOjos}}</li>
+          <li class="list-group-item"><h5 class="text-primary">Color de Cabello: </h5>{{colorCabello}}</li>
+          <li class="list-group-item"><h5 class="text-primary">Lugar de trabajo: </h5>{{heroe.work?.base}}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+

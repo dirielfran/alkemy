@@ -1,0 +1,45 @@
+<app-nvar></app-nvar>
+<div class="container ">
+  <div class="card mt-5">
+    <div class="card-header">
+      Buscador
+    </div>
+    <div class="card-body">
+      <div class="mt-3">
+        <form autocomplete="off" [formGroup]="myForm" (ngSubmit)="getSearch()">
+          <label for="exampleFormControlInput1" class="form-label">Buscar Heroe</label>
+          <input type="text" class="form-control mb-3" formControlName="search" placeholder="Buscar Heroe">
+          <button type="submit" class="btn btn-success"  [disabled]="myForm.invalid">Buscar</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="card mt-5" *ngIf="heroes.length > 0">
+    <div class="card-header">
+      Lista de heroes
+    </div>
+    <div class="card-body">
+      <div class="mt-3">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Img</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Accion</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let heroe of heroes">
+              <td><img src="{{heroe.image?.url}}" class="img-fluid imagen" alt="Imagen"></td>
+              <td>{{heroe.name}}</td>
+              <td><button type="button" class="btn btn-success" (click)="agregarHeroe(heroe)">Agregar</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+

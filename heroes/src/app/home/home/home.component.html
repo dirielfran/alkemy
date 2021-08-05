@@ -1,0 +1,76 @@
+<app-nvar></app-nvar>
+<div class="container ">
+  <div class="card mt-5" *ngIf="heroesSeleccionados.length > 0">
+    <div class="card-header">
+      Acumulativo de Poderes:
+    </div>
+    <div class="card-body">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">Intelligence: {{intelligence}}</li>
+        <li class="list-group-item">Strength: {{strength}}</li>
+        <li class="list-group-item">Speed: {{speed}}</li>
+        <li class="list-group-item">Durability: {{durability}}</li>
+        <li class="list-group-item">Power: {{power}}</li>
+        <li class="list-group-item">Combat: {{combat}}</li>
+      </ul>
+    </div>
+    <div class="card-header">
+      Acumulativo de Poderes:
+    </div>
+    <div class="card-body">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">Promedio de peso: {{ peso / heroesSeleccionados.length | number }}</li>
+        <li class="list-group-item">Promedio de altura: {{altura / heroesSeleccionados.length | number}}</li>
+      </ul>
+    </div>
+  </div>
+  <div class="card mt-5">
+    <div class="card-header">
+      Equipo de heroes
+    </div>
+    <div class="card-body">
+      <div class="alert alert-secondary" role="alert" *ngIf="heroesSeleccionados.length == 0">
+        No hay integrantes en el equipo
+      </div>
+
+      <div class="mt-3">
+        <table class="table table-striped" *ngIf="heroesSeleccionados.length > 0">
+          <thead>
+            <tr>
+              <th scope="col">Img</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Orientacion</th>
+              <th scope="col">Powerstats</th>
+              <th scope="col">Detalle</th>
+              <th scope="col">Eliminar</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let heroe of heroesSeleccionados">
+              <td><img src="{{heroe.image?.url}}" class="img-fluid imagen" alt="Imagen"></td>
+              <td>{{heroe.name}}</td>
+              <td>{{heroe.biography?.alignment}}</td>
+              <td>
+                <ul>
+                  <li><strong>Intelligence:</strong>{{heroe.powerstats?.intelligence}}</li>
+                  <li><strong>Strength:</strong>{{heroe.powerstats?.strength}}</li>
+                  <li><strong>Speed:</strong>{{heroe.powerstats?.speed}}</li>
+                  <li><strong>Durability:</strong>{{heroe.powerstats?.durability}}</li>
+                  <li><strong>Power:</strong>{{heroe.powerstats?.power}}</li>
+                  <li><strong>Combat:</strong>{{heroe.powerstats?.combat}}</li>
+                </ul>
+              </td>
+              <td><button type="button" class="btn btn-primary" [routerLink]="['/heroes', heroe.id]">Detalle</button></td>
+              <td><button type="button" class="btn btn-success" (click)="eliminarHeroe(heroe)">Eliminar</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
